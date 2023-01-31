@@ -41,23 +41,7 @@ export default class BlupiWalks2 {
     this.distance += elapsedTime * this.speed;
     this.distance = this.distance % 560;
 
-    const isUp = this.isArrowUp(input);
-    // Touche pressée ?
-    if (isUp && !this.isUp && this.jumpHeight === 0) {
-      this.jumpTime = 0; // démarre le temps max de saut
-    }
-    this.isUp = isUp;
-
-    // Si blupi saute, mais depuis moins de 0.5s :
-    if (isUp && this.jumpTime < 0.5) {
-      // Blupi monte.
-      this.jumpTime += elapsedTime;
-      this.jumpHeight += elapsedTime * this.jumpSpeed;
-    } else {
-      // Blupi redescend.
-      this.jumpHeight -= elapsedTime * this.jumpSpeed;
-    }
-    this.jumpHeight = Misc.clip(this.jumpHeight); // 0..1
+    // TODO
   }
 
   draw(device, pixmap) {
@@ -75,9 +59,7 @@ export default class BlupiWalks2 {
     } else {
       // Blupi saute.
       icon = 21;
-      const y = Math.pow(1 - this.jumpHeight, 2);
-      const h = Misc.linear(0, -50, 1, 0, y);
-      position.y += h;
+      // TODO
     }
 
     const rect = Rect.fromCenterSize(position, 80);
